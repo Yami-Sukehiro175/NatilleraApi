@@ -179,12 +179,14 @@
     </Compile>
     <Compile Include="Clases\clsBanco.cs" />
     <Compile Include="Clases\clsCiudad.cs" />
+    <Compile Include="Clases\clsCliente.cs" />
     <Compile Include="Clases\clsTipoCuenta.cs" />
     <Compile Include="Cliente.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BancoController.cs" />
     <Compile Include="Controllers\CiudadController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TipoCuentaController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -212,6 +214,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClienteLista.cs" />
     <Compile Include="Models\viewCombos.cs" />
     <Compile Include="Prestamo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
