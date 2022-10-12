@@ -9,9 +9,11 @@
 
 namespace NatilleraApi
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class Liquidacion
     {
         public int IDLiquidacion { get; set; }
@@ -21,7 +23,8 @@ namespace NatilleraApi
         public double Ganancias { get; set; }
         public System.DateTime FechaLiquidacion { get; set; }
         public double Total { get; set; }
-    
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual Cliente Cliente { get; set; }
     }
 }

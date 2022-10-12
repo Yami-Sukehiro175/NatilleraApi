@@ -19,6 +19,12 @@ namespace NatilleraApi.Controllers
             clsCliente oCliente = new clsCliente();
             return oCliente.ListarClientes();
         }
+        public List<viewCombos>  Get(string Combo) {
+            
+            clsCliente Cliente = new clsCliente();
+            return Cliente.LlenarComboCliente();
+            
+        }
 
     }
 }

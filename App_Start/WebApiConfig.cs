@@ -13,7 +13,9 @@ namespace NatilleraApi
             // Configuración y servicios de API web
 
             // Rutas de API web
-            config.EnableCors();
+            var corsAttr = new EnableCorsAttribute("http://localhost:50072", "*", "*");
+            config.EnableCors(corsAttr);
+            // config.EnableCors();
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

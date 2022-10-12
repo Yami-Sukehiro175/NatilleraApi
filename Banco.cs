@@ -9,9 +9,11 @@
 
 namespace NatilleraApi
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class Banco
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +24,9 @@ namespace NatilleraApi
     
         public int IDbanco { get; set; }
         public string NombreBanco { get; set; }
-    
+        [JsonIgnore]
+        [IgnoreDataMember]
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cliente> Cliente { get; set; }
     }
