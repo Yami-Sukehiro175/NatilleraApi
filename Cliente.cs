@@ -23,7 +23,7 @@ namespace NatilleraApi
             this.Liquidacion = new HashSet<Liquidacion>();
             this.Prestamo = new HashSet<Prestamo>();
         }
-
+    
         public string Documento { get; set; }
         public string Nombre { get; set; }
         public System.DateTime FechaNacimiento { get; set; }
@@ -37,7 +37,7 @@ namespace NatilleraApi
         public string Celular { get; set; }
         public string Correo { get; set; }
         public string Ocupacion { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         [IgnoreDataMember]
@@ -51,9 +51,9 @@ namespace NatilleraApi
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual TipoCuenta TipoCuenta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Liquidacion> Liquidacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

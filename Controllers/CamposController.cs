@@ -26,7 +26,12 @@ namespace NatilleraApi.Controllers
                 clsCampos OCampos = new clsCampos();
                 return OCampos.ListarClientes();
             }
+        public List<ClienteListaPrestamo> Get(int Id)
+        {
+            clsCampos OCampos = new clsCampos();
+            return OCampos.ListarClientesPrestamo();
         }
+    }
 
       
     }

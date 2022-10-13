@@ -25,6 +25,6 @@ namespace NatilleraApi
         public double Total { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        public virtual Cliente Cliente { get; set; }
+          public virtual Cliente Cliente { get; set; }
     }
 }

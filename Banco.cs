@@ -21,13 +21,13 @@ namespace NatilleraApi
         {
             this.Cliente = new HashSet<Cliente>();
         }
-    
+
         public int IDbanco { get; set; }
         public string NombreBanco { get; set; }
-        [JsonIgnore]
-        [IgnoreDataMember]
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual ICollection<Cliente> Cliente { get; set; }
     }
 }

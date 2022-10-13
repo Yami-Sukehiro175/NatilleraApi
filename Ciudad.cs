@@ -21,10 +21,10 @@ namespace NatilleraApi
         {
             this.Cliente = new HashSet<Cliente>();
         }
-
+    
         public int IDCiudad { get; set; }
         public string NombreCiudad { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         [IgnoreDataMember]

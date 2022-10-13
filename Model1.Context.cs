@@ -29,10 +29,8 @@ namespace NatilleraApi
         public virtual DbSet<Banco> Banco { get; set; }
         public virtual DbSet<Ciudad> Ciudad { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<Interes> Interes { get; set; }
         public virtual DbSet<Liquidacion> Liquidacion { get; set; }
         public virtual DbSet<Prestamo> Prestamo { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoCuenta> TipoCuenta { get; set; }
     }
 }

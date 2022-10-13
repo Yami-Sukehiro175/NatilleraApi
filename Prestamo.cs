@@ -9,18 +9,21 @@
 
 namespace NatilleraApi
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class Prestamo
     {
         public int IDPrestamo { get; set; }
         public string IDCliente { get; set; }
         public System.DateTime FechaPrestamo { get; set; }
         public double ValorPrestado { get; set; }
-        public int InteresID { get; set; }
-    
-        public virtual Cliente Cliente { get; set; }
-        public virtual Interes Interes { get; set; }
+        public double InteresPor { get; set; }
+        public double ValorTotalPrestamo { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+          public virtual Cliente Cliente { get; set; }
     }
 }

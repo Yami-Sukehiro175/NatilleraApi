@@ -46,13 +46,6 @@
           <Property Name="Correo" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Ocupacion" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Interes">
-          <Key>
-            <PropertyRef Name="IDInteres" />
-          </Key>
-          <Property Name="IDInteres" Type="int" Nullable="false" />
-          <Property Name="NombreInteres" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="Liquidacion">
           <Key>
             <PropertyRef Name="IDLiquidacion" />
@@ -73,17 +66,8 @@
           <Property Name="IDCliente" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="FechaPrestamo" Type="date" Nullable="false" />
           <Property Name="ValorPrestado" Type="float" Nullable="false" />
-          <Property Name="InteresID" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="InteresPor" Type="float" Nullable="false" />
+          <Property Name="ValorTotalPrestamo" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoCuenta">
           <Key>
@@ -92,7 +76,7 @@
           <Property Name="IdTipoCuenta" Type="int" Nullable="false" />
           <Property Name="NombreTipoCuenta" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Ahorro__IDClient__33D4B598">
+        <Association Name="FK__Ahorro__IDClient__31EC6D26">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
           <End Role="Ahorro" Type="Self.Ahorro" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Liquidaci__IdCli__34C8D9D1">
+        <Association Name="FK__Liquidaci__IdCli__32E0915F">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
           <End Role="Liquidacion" Type="Self.Liquidacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,7 +136,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Prestamo__IDClie__35BCFE0A">
+        <Association Name="FK__Prestamo__IDClie__33D4B598">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
           <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,29 +148,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Prestamo__Intere__36B12243">
-          <End Role="Interes" Type="Self.Interes" Multiplicity="1" />
-          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Interes">
-              <PropertyRef Name="IDInteres" />
-            </Principal>
-            <Dependent Role="Prestamo">
-              <PropertyRef Name="InteresID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NatilleraModelStoreContainer">
           <EntitySet Name="Ahorro" EntityType="Self.Ahorro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Interes" EntityType="Self.Interes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Liquidacion" EntityType="Self.Liquidacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prestamo" EntityType="Self.Prestamo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoCuenta" EntityType="Self.TipoCuenta" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Ahorro__IDClient__33D4B598" Association="Self.FK__Ahorro__IDClient__33D4B598">
+          <AssociationSet Name="FK__Ahorro__IDClient__31EC6D26" Association="Self.FK__Ahorro__IDClient__31EC6D26">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Ahorro" EntitySet="Ahorro" />
           </AssociationSet>
@@ -202,16 +172,12 @@
             <End Role="TipoCuenta" EntitySet="TipoCuenta" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Liquidaci__IdCli__34C8D9D1" Association="Self.FK__Liquidaci__IdCli__34C8D9D1">
+          <AssociationSet Name="FK__Liquidaci__IdCli__32E0915F" Association="Self.FK__Liquidaci__IdCli__32E0915F">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Liquidacion" EntitySet="Liquidacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Prestamo__IDClie__35BCFE0A" Association="Self.FK__Prestamo__IDClie__35BCFE0A">
+          <AssociationSet Name="FK__Prestamo__IDClie__33D4B598" Association="Self.FK__Prestamo__IDClie__33D4B598">
             <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Prestamo" EntitySet="Prestamo" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Prestamo__Intere__36B12243" Association="Self.FK__Prestamo__Intere__36B12243">
-            <End Role="Interes" EntitySet="Interes" />
             <End Role="Prestamo" EntitySet="Prestamo" />
           </AssociationSet>
         </EntityContainer>
@@ -228,7 +194,7 @@
           <Property Name="IDCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FechaAhorro" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ValorAhorrado" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK__Ahorro__IDClient__33D4B598" FromRole="Ahorro" ToRole="Cliente" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Ahorro__IDClient__31EC6D26" FromRole="Ahorro" ToRole="Cliente" />
         </EntityType>
         <EntityType Name="Banco">
           <Key>
@@ -263,20 +229,12 @@
           <Property Name="Celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Ocupacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Ahorro" Relationship="Self.FK__Ahorro__IDClient__33D4B598" FromRole="Cliente" ToRole="Ahorro" />
+          <NavigationProperty Name="Ahorro" Relationship="Self.FK__Ahorro__IDClient__31EC6D26" FromRole="Cliente" ToRole="Ahorro" />
           <NavigationProperty Name="Banco" Relationship="Self.FK__Cliente__IdBanco__2B3F6F97" FromRole="Cliente" ToRole="Banco" />
           <NavigationProperty Name="Ciudad" Relationship="Self.FK__Cliente__IdCiuda__29572725" FromRole="Cliente" ToRole="Ciudad" />
           <NavigationProperty Name="TipoCuenta" Relationship="Self.FK__Cliente__IdTipoC__2A4B4B5E" FromRole="Cliente" ToRole="TipoCuenta" />
-          <NavigationProperty Name="Liquidacion" Relationship="Self.FK__Liquidaci__IdCli__34C8D9D1" FromRole="Cliente" ToRole="Liquidacion" />
-          <NavigationProperty Name="Prestamo" Relationship="Self.FK__Prestamo__IDClie__35BCFE0A" FromRole="Cliente" ToRole="Prestamo" />
-        </EntityType>
-        <EntityType Name="Interes">
-          <Key>
-            <PropertyRef Name="IDInteres" />
-          </Key>
-          <Property Name="IDInteres" Type="Int32" Nullable="false" />
-          <Property Name="NombreInteres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Prestamo" Relationship="Self.FK__Prestamo__Intere__36B12243" FromRole="Interes" ToRole="Prestamo" />
+          <NavigationProperty Name="Liquidacion" Relationship="Self.FK__Liquidaci__IdCli__32E0915F" FromRole="Cliente" ToRole="Liquidacion" />
+          <NavigationProperty Name="Prestamo" Relationship="Self.FK__Prestamo__IDClie__33D4B598" FromRole="Cliente" ToRole="Prestamo" />
         </EntityType>
         <EntityType Name="Liquidacion">
           <Key>
@@ -289,7 +247,7 @@
           <Property Name="Ganancias" Type="Double" Nullable="false" />
           <Property Name="FechaLiquidacion" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Total" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK__Liquidaci__IdCli__34C8D9D1" FromRole="Liquidacion" ToRole="Cliente" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Liquidaci__IdCli__32E0915F" FromRole="Liquidacion" ToRole="Cliente" />
         </EntityType>
         <EntityType Name="Prestamo">
           <Key>
@@ -299,19 +257,9 @@
           <Property Name="IDCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FechaPrestamo" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ValorPrestado" Type="Double" Nullable="false" />
-          <Property Name="InteresID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK__Prestamo__IDClie__35BCFE0A" FromRole="Prestamo" ToRole="Cliente" />
-          <NavigationProperty Name="Interes" Relationship="Self.FK__Prestamo__Intere__36B12243" FromRole="Prestamo" ToRole="Interes" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="InteresPor" Type="Double" Nullable="false" />
+          <Property Name="ValorTotalPrestamo" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Prestamo__IDClie__33D4B598" FromRole="Prestamo" ToRole="Cliente" />
         </EntityType>
         <EntityType Name="TipoCuenta">
           <Key>
@@ -321,7 +269,7 @@
           <Property Name="NombreTipoCuenta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__IdTipoC__2A4B4B5E" FromRole="TipoCuenta" ToRole="Cliente" />
         </EntityType>
-        <Association Name="FK__Ahorro__IDClient__33D4B598">
+        <Association Name="FK__Ahorro__IDClient__31EC6D26">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
           <End Role="Ahorro" Type="Self.Ahorro" Multiplicity="*" />
           <ReferentialConstraint>
@@ -369,7 +317,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Liquidaci__IdCli__34C8D9D1">
+        <Association Name="FK__Liquidaci__IdCli__32E0915F">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
           <End Role="Liquidacion" Type="Self.Liquidacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -381,7 +329,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Prestamo__IDClie__35BCFE0A">
+        <Association Name="FK__Prestamo__IDClie__33D4B598">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
           <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -393,29 +341,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Prestamo__Intere__36B12243">
-          <End Role="Interes" Type="Self.Interes" Multiplicity="1" />
-          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Interes">
-              <PropertyRef Name="IDInteres" />
-            </Principal>
-            <Dependent Role="Prestamo">
-              <PropertyRef Name="InteresID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NatilleraEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ahorro" EntityType="Self.Ahorro" />
           <EntitySet Name="Banco" EntityType="Self.Banco" />
           <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
-          <EntitySet Name="Interes" EntityType="Self.Interes" />
           <EntitySet Name="Liquidacion" EntityType="Self.Liquidacion" />
           <EntitySet Name="Prestamo" EntityType="Self.Prestamo" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TipoCuenta" EntityType="Self.TipoCuenta" />
-          <AssociationSet Name="FK__Ahorro__IDClient__33D4B598" Association="Self.FK__Ahorro__IDClient__33D4B598">
+          <AssociationSet Name="FK__Ahorro__IDClient__31EC6D26" Association="Self.FK__Ahorro__IDClient__31EC6D26">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Ahorro" EntitySet="Ahorro" />
           </AssociationSet>
@@ -431,16 +365,12 @@
             <End Role="TipoCuenta" EntitySet="TipoCuenta" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Liquidaci__IdCli__34C8D9D1" Association="Self.FK__Liquidaci__IdCli__34C8D9D1">
+          <AssociationSet Name="FK__Liquidaci__IdCli__32E0915F" Association="Self.FK__Liquidaci__IdCli__32E0915F">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Liquidacion" EntitySet="Liquidacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Prestamo__IDClie__35BCFE0A" Association="Self.FK__Prestamo__IDClie__35BCFE0A">
+          <AssociationSet Name="FK__Prestamo__IDClie__33D4B598" Association="Self.FK__Prestamo__IDClie__33D4B598">
             <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Prestamo" EntitySet="Prestamo" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Prestamo__Intere__36B12243" Association="Self.FK__Prestamo__Intere__36B12243">
-            <End Role="Interes" EntitySet="Interes" />
             <End Role="Prestamo" EntitySet="Prestamo" />
           </AssociationSet>
         </EntityContainer>
@@ -495,14 +425,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Interes">
-            <EntityTypeMapping TypeName="NatilleraModel.Interes">
-              <MappingFragment StoreEntitySet="Interes">
-                <ScalarProperty Name="IDInteres" ColumnName="IDInteres" />
-                <ScalarProperty Name="NombreInteres" ColumnName="NombreInteres" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Liquidacion">
             <EntityTypeMapping TypeName="NatilleraModel.Liquidacion">
               <MappingFragment StoreEntitySet="Liquidacion">
@@ -523,18 +445,8 @@
                 <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
                 <ScalarProperty Name="FechaPrestamo" ColumnName="FechaPrestamo" />
                 <ScalarProperty Name="ValorPrestado" ColumnName="ValorPrestado" />
-                <ScalarProperty Name="InteresID" ColumnName="InteresID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="NatilleraModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="InteresPor" ColumnName="InteresPor" />
+                <ScalarProperty Name="ValorTotalPrestamo" ColumnName="ValorTotalPrestamo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
